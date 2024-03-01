@@ -1,0 +1,253 @@
+.banner {
+    width: 100%;
+    min-height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner .container {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftbar {
+    margin-top: 100px;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.leftbar div {
+    display: flex;
+    flex-direction: column;
+    margin: 45px 0px;
+}
+
+.leftbar div a {
+    margin-top: 20px;
+    transition: .2s all ease;
+}
+
+.leftbar div a:hover {
+    color: var(--main-orange-color);
+    transform: scale(110%);
+}
+
+.leftbar hr {
+    height: 158px;
+    width: 1px;
+}
+
+
+.header {
+    width: inherit;
+    height: 900px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_text {
+    margin-top: 150px;
+}
+
+.header_text h3 {
+    font-family: 'Italianno', cursive;
+    color: var(--main-orange-color);
+}
+
+.header_text h1 {
+    margin-top: 10px;
+}
+
+.header_text h5 {
+    font-weight: normal;
+}
+
+.header_text a {
+    margin-top: 32px;
+    width: 190px;
+    height: 60px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-orange-color);
+}
+
+.category {
+    height: 600px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.category .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.category .container h3 {
+    font-family: 'Italianno', cursive;
+    color: var(--main-orange-color);
+}
+
+.category .container div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.category .container div a {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s all ease-in;
+    z-index: 1;
+}
+
+.category .container div a:hover {
+    opacity: 0.4;
+}
+
+
+.category .container div a h2 {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    padding-top: 100px;
+    opacity: 0;
+    transition: .2s all ease;
+    z-index: 999;
+}
+
+.category .container div a h2:hover {
+    opacity: 1;
+}
+
+.client {
+    width: 100%;
+    height: 900px;
+    background-size: cover;
+}
+
+.client .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.client_header {
+    padding-top: 100px;
+    font-family: 'Italianno', cursive;
+    color: var(--main-orange-color);
+}
+
+.feedback_card {
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 5px solid var(--main-orange-color);
+}
+
+.feedback_card img {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.feedback_card h4 {
+    color: #000;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 30px;
+    width: 80%;
+
+}
+
+.feedback_card h3 {
+    font-family: 'Italianno', cursive;
+    color: var(--main-orange-color);
+    margin-top: 30px;
+}
+
+.feedback_card div {
+    margin-top: 30px;
+}
+
+.feedback_card div i {
+    color: var(--main-orange-color);
+}
+
+.support {
+    width: 100%;
+    height: 300px;
+}
+
+.support .container {
+    height: inherit;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    align-items: center;
+}
+
+.support_header h5 {
+    margin-top: 10px;
+}
+
+.support .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.support_email {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 460px;
+    height: 56px;
+    justify-content: center;
+}
+
+.support_email input {
+    border: none;
+    width: 300px;
+    height: inherit;
+    background-color: var(--main-orange-color);
+    color: #fff;
+    outline: none;
+    padding-left: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.support_email input::placeholder {
+    color: #fff;
+}
+
+.support_email a {
+    width: 160px;
+    height: 56px;
+    background-color: #fff;
+    color: var(--main-orange-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

@@ -1,0 +1,15 @@
+<%- include('layout.ejs', {body: `
+    <div class="cart-container">
+        <h1>Корзина</h1>
+        <% orders.forEach(order => { %>
+            <div class="cart-item">
+                <p><%= order.food.name %> - $<%= order.food.price %></p>
+            </div>
+        <% }); %>
+        
+        <form action="/cart/doOrder" method="post">
+            <button type="submit">Оформить заказ</button>
+        </form>
+    </div>
+
+    `}) %>

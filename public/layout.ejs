@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Home
+    </title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav_links">
+                <a href="/" id="navbutton">
+                    <h5>Home</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/menu" id="navbutton">
+                    <h5>Menu</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/about" id="navbutton">
+                    <h5>About</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/map" id="navbutton">
+                    <h5>Map</h5>
+                    <hr id="navline">
+                </a>
+            </div>
+            <div class="logo">
+                <h2><span>Fran</span>cesco</h2>
+            </div>
+            <div class="user">
+                <% if (username) { %>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <%= username %>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Профиль</a>
+                            <a href="/auth/logout">Выйти</a>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <h5>
+                            <a href="/auth/login">Login</a>
+                        </h5>
+                        <% } %>
+            </div>
+
+        </div>
+    </header>
+    <div class="banner" style="background-image: url(/img/texture.jpg);">
+        <div class="container">
+
+            <div id="home-content">
+                <%- body %>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h5>Copyright © 2024 by Italiano. All Rights Reserved.</h5>
+            <div>
+                <a href=""><i class='bx bxl-twitter bx-sm'></i></a>
+                <a href=""><i class='bx bxl-facebook bx-sm'></i></a>
+                <a href=""><i class='bx bxl-whatsapp bx-sm'></i></a>
+                <a href=""><i class='bx bxl-instagram bx-sm'></i></a>
+                <a href=""><i class='bx bxl-youtube bx-sm'></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
