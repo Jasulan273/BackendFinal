@@ -37,14 +37,14 @@ router.post('/login', async (req, res) => {
   try {
     console.log('Request body:', req.body);
 
-    const { username, password } = req.body; // Получаем username и password из запроса
+    const { username, password } = req.body; 
 
     const user = await User.findOne({ username });
     if (!user) {
       console.log('User not found:', username);
       return res.status(401).send('Invalid username or password');
     }
-
+    req.session.userId = user._id;
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       console.log('Invalid password for user:', username);

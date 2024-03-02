@@ -17,11 +17,11 @@ router.post('/submitOrder', async (req, res) => {
     try {
         const cartItems = req.body.cartItems;
 
-        // Создаем новый заказ в базе данных
+ 
         const order = new Order({
             items: cartItems,
-            total: 0, // Можете настроить логику расчета общей суммы
-            user: req.user._id, // Предполагается, что у вас есть middleware, устанавливающий пользователя в req
+            total: 0, 
+            user: req.user._id, 
         });
 
         await order.save();

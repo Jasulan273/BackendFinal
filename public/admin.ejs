@@ -1,59 +1,172 @@
-<%- include('layout.ejs', {body: ` <style>
-    .admin_btn {
-    padding: 10px 15px;
-    background-color: #ff9f0d;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    .admin_btn:hover {
-    background-color: #2980b9;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Home
+    </title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+</head>
 
-    .admin_btn.button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #2ecc71;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    }
+<body>
+    <style>
+        .admin {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    a.button:hover {
-    background-color: #27ae60;
-    }
+        .admin_btn {
+            padding: 10px 15px;
+            background-color: #ff9f0d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .admin_btn:hover {
+            background-color: #2980b9;
+        }
+
+        .admin_btn.button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #2ecc71;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        a.button:hover {
+            background-color: #27ae60;
+        }
 
 
-    ul {
-    list-style: none;
-    padding: 0;
-    }
+        .order_list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            width: 400px;
+            color: #000;
+            padding: 10px;
+            overflow: scroll;
+            margin-bottom: 50px;
+            height: 400px;
+        }
 
-    li {
-    display: inline-block;
-    margin-right: 20px;
-    }
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
 
-    body.admin-panel {
-    background-color: #ecf0f1;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    }
+        body.admin-panel {
+            background-color: #ecf0f1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    h1 {
-    color: #2c3e50;
-    }
+        h1 {
+            color: #2c3e50;
+        }
     </style>
 
 
-    <section class="admin" style="margin-top: 100px;">
-        <ul>
-            <li><a class="admin_btn" href="/food/new">Add Food</a></li>
-            <li><a class="admin_btn" href="/admin/delete-user">Delete User</a></li>
-        </ul>
-    </section>
-    `}) %>
+    <header>
+        <div class="container">
+            <div class="nav_links">
+                <a href="/" id="navbutton">
+                    <h5>Home</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/menu" id="navbutton">
+                    <h5>Menu</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/about" id="navbutton">
+                    <h5>About</h5>
+                    <hr id="navline">
+                </a>
+                <a href="/map" id="navbutton">
+                    <h5>Map</h5>
+                    <hr id="navline">
+                </a>
+            </div>
+            <div class="logo">
+                <h2><span>Fran</span>cesco</h2>
+            </div>
+            <div class="user">
+                <% if (username) { %>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <%= username %>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Профиль</a>
+                            <a href="/auth/logout">Выйти</a>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <h5>
+                            <a href="/auth/login">Login</a>
+                        </h5>
+                        <% } %>
+            </div>
+
+        </div>
+    </header>
+    <div class="banner" style="background-image: url(/img/texture.jpg);">
+        <div class="container">
+
+            <section class="admin" style="margin-top: 100px;">
+                <div class="orders">
+                    <h2>Orders</h2>
+                    <ul class="order_list">
+                        <% orders.forEach(order=> { %>
+                            <li>
+                                <h4>User: <%= order.user ? order.user.username : 'N/A' %>
+                                </h4>
+                                <p>Items: <%= order.items.map(item=> item.name).join(', ') %></p>
+                                <p>Total: $<%= order.total %>
+                                </p>
+                                <p>Date: <%= order.date %>
+                                </p>
+                            </li>
+                            <% }); %>
+                    </ul>
+                </div>
+                <div class="func_buttons">
+                    <ul>
+                        <li><a class="admin_btn" href="/food/new">Add Food</a></li>
+                        <li><a class="admin_btn" href="/admin/delete-user">Delete User</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h5>Copyright © 2024 by Italiano. All Rights Reserved.</h5>
+            <div>
+                <a href=""><i class='bx bxl-twitter bx-sm'></i></a>
+                <a href=""><i class='bx bxl-facebook bx-sm'></i></a>
+                <a href=""><i class='bx bxl-whatsapp bx-sm'></i></a>
+                <a href=""><i class='bx bxl-instagram bx-sm'></i></a>
+                <a href=""><i class='bx bxl-youtube bx-sm'></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

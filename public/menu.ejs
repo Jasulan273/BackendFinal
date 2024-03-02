@@ -41,7 +41,26 @@
             <div class="logo">
                 <h2><span>Fran</span>cesco</h2>
             </div>
+            <div class="cart-section">
+                <button onclick="openCartModal()" class="view-cart-btn">View Cart</button>
+                <ul id="cart-list" class="cart-list">
+                    <% selectedFoods.forEach(food=> { %>
+                        <li>
+                            <img src="<%= food.image %>" alt="<%= food.name %>">
+                            <h4>
+                                <%= food.name %>
+                            </h4>
+                        </li>
+                        <% }); %>
+                </ul>
+            </div>
+            <div id="cart-modal" class="modal">
+                <div class="modal-content">
+                    <span onclick="closeCartModal()" class="close">&times;</span>
 
+                    <button onclick="submitOrder()" class="submit-order-btn">Submit Order</button>
+                </div>
+            </div>
             <div class="user">
                 <% if (username) { %>
                     <div class="dropdown">
@@ -75,15 +94,19 @@
                                 <h2>
                                     <%= food.name %>
                                 </h2>
-                                <p>
-                                    <%= food.description %>
-                                </p>
                                 <p class="price">Price: $<%= food.price %>
                                 </p>
-                                <form action="/addToCart" method="post">
-                                    <input type="hidden" name="foodId" value="<%= food._id %>">
-                                    <button type="submit" class="add-to-cart-btn">+</button>
-                                </form>
+
+                                <% if (username) { %>
+
+                                    <form action="/menu/addToCart" method="post">
+                                        <input type="hidden" name="foodId" value="<%= food._id %>">
+                                        <button type="submit" class="add-to-cart-btn">+</button>
+                                    </form>
+                                    <% } else { %>
+
+                                        <a href="/auth/login" class="add-to-cart-btn">Login to Add to Cart</a>
+                                        <% } %>
                             </div>
                         </div>
                         <% }); %>
@@ -108,6 +131,7 @@
     <script>
         function openCartModal() {
             document.getElementById('cart-modal').style.display = 'block';
+
         }
 
         function closeCartModal() {
@@ -115,8 +139,39 @@
         }
 
         function submitOrder() {
-
+            // Здесь вы можете отправить запрос на сервер для оформления заказа
+            // Перенаправить пользователя на страницу подтверждения заказа, например
+            window.location.href = '/order/confirmation';
         }
+        function openCartModal() {
+            document.getElementById('cart-modal').style.display = 'block';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        async function addToCart(foodId) {
+            try {
+                const response = await fetch('/menu/addToCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ foodId }),
+                });
+
+                if (response.ok) {
+                    // Обновляем страницу после добавления в корзину
+                    window.location.reload();
+                } else {
+                    console.error('Failed to add to cart');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+            }
+        }
+
     </script>
 
 </body>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Подтверждение заказа</title>
+</head>
+<body>
+  <h1>Подтверждение заказа</h1>
+  <ul>
+    <% foods.forEach(food => { %>
+      <li><%= food.name %></li>
+    <% }); %>
+  </ul>
+  <form action="/order/place" method="post">
+    <button type="submit">Подтвердить заказ</button>
+  </form>
+</body>
+</html>
