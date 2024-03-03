@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
     next();
 });
-mongoose.connect('mongodb+srv://texnop30618:Jasik2004@cluster0.7qf5jtn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://texnop30618:<password>@cluster0.7qf5jtn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
